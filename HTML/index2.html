@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Form tags</h1>
+    <!-- <form action="serverfile" method="post"> -->
+    <!-- Two ways to submit by url and by sending values to the route -->
+    <form>
+      <!-- <p><input type="text" required autofocus maxlength="5"/></p> -->
+      <!-- <p>
+        <input type="text" value=" L.Messi" readonly disabled size="10px" />
+      </p> -->
+      <p>
+        <input type="text" placeholder="Enter name" />
+      </p>
+      <button type="submit">Submit</button>
+      <!-- <input type="submit" value="Submit" /> -->
+      <!-- <input type="image" src="button.png">  -->
+      <!-- this is when we click on an image it submits -->
+      <fieldset>
+        <legend>Login Form</legend>
+        <form>
+          <p>
+            <input type="email" placeholder="Enter email" required />
+          </p>
+          <p>
+            <input type="password" placeholder="Enter password" required />
+          </p>
+          <button>Login</button>
+        </form>
+      </fieldset>
+      <fieldset>
+        <legend>Register Form</legend>
+        <form>
+          <p>
+            <input type="text" placeholder="Enter name" required />
+          </p>
+          <p>
+            <input type="email" placeholder="Enter email" required />
+          </p>
+          <p>
+            <input type="password" placeholder="Enter password" required />
+          </p>
+          <p><input type="date" /></p>
+          <p>
+            <input type="checkbox" checked />Mern Stack
+            <input type="checkbox" /> Java Full Stack
+            <input type="checkbox" /> Python Full Stack
+          </p>
+          <p>
+            <input type="radio" name="batch" />Morning Batch
+            <input type="radio" name="batch" checked />Evening Batch
+          </p>
+          <p>
+            <select multiple>
+              <option value="HTML">HTML</option>
+              <option value="CSS">CSS</option>
+              <option value="JS">JavaScript</option>
+              <option value="React" selected>React</option>
+            </select>
+          </p>
+          <p>
+            <input type="file" accept=".jpg,.png" />
+          </p>
+          <p>
+            <input type="color" value="#ff0000" />
+          </p>
+          <p><textarea rows="5" cols="40" placeholder="About me"></textarea></p>
+          <p>
+            <input type="number" placeholder="Enter age" min="18" max="60" />
+          </p>
+
+          <p>
+            <input list="countrys" placeholder="Select country" />
+            <datalist id="countrys">
+              <option value="India"></option>
+              <option value="USA"></option>
+              <option value="Canada"></option>
+              <option value="Australia"></option>
+              <option value="Germany"></option>
+              <option value="France"></option>
+              <option value="Japan"></option>
+              <option value="China"></option>
+            </datalist>
+          </p>
+          <button>Register</button>
+          <button type="reset">Reset</button>
+        </form>
+      </fieldset>
+    </form>
+  </body>
+</html>
