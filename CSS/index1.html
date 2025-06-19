@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .main {
+        background-color: black;
+        color: white;
+      }
+      .main div {
+        background-color: orange;
+        color: black;
+      }
+      .parent {
+        background-color: grey;
+        padding: 10px;
+      }
+      .child {
+        background-color: pink;
+        padding: 20px;
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Basics Concept and box model</h1>
+    <!-- inlie style is given more preference -->
+    <div class="main">
+      <div>Hello</div>
+      <div>How are you</div>
+    </div>
+    <div class="parent">
+      <div class="child">Hello World</div>
+    </div>
+  </body>
+</html>

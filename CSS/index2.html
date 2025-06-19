@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .flex {
+        display: flex;
+        justify-content: space-around;
+        background-color: yellow;
+        height: 300px;
+        gap: 3px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        background-color: aqua;
+        row-gap: 20px;
+      }
+      li {
+        display: inline-block;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Flexbox and Grid</h1>
+    <ul>
+      <li>Home</li>
+      <li>Services</li>
+      <li>Projects</li>
+      <li>Skills</li>
+      <li>Contact</li>
+    </ul>
+    <div class="flex">
+      <div>child1 child1</div>
+      <div>child2</div>
+      <div>child 3</div>
+      <div>child 3</div>
+      <div>child 3</div>
+      <div>child 3</div>
+      <div>child 3</div>
+      <div>child 3</div>
+      <div>child 3</div>
+      <div>child 3</div>
+      <div>child 3</div>
+      <div>child 3</div>
+      <div>child 3</div>
+      <div>child 3</div>
+      <div>child 3</div>
+      <div>child 3</div>
+    </div>
+
+    <div class="grid">
+      <div>child1</div>
+      <div>child1</div>
+      <div>child1</div>
+      <div>child1</div>
+      <div>child1</div>
+    </div>
+  </body>
+</html>

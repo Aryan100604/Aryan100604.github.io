@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    @media screen and (min-width: 300px) {
+      .articles {
+        background-color: rgb(35, 47, 171);
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+    }
+    @media screen and (min-width: 600px) {
+      .articles {
+        background-color: rgb(112, 218, 121);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media screen and (min-width: 1200px) {
+      .articles {
+        background-color: orchid;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  </style>
+  <body>
+    <h1>Responsive design</h1>
+    <div class="articles">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex impedit
+        magni in ea aut laudantium quasi vero repellat accusantium cumque.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed repudiandae
+        saepe ratione voluptatum fuga animi, porro dolorem aliquid possimus.
+        Dignissimos.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quae
+        eligendi corrupti id eius laboriosam assumenda delectus doloremque,
+        numquam iusto?
+      </p>
+    </div>
+  </body>
+</html>
