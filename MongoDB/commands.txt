@@ -1,0 +1,32 @@
+*show dbs 
+To show all the databases
+
+*use <databasename>
+to use the database or if not present database will be created
+
+*exit 
+if you want to exit mongosh terminal
+
+*mongosh 
+to connect mongodb to lacalhost and enter in mongosh shell
+
+*show collections
+
+*db.users.insertOne({})
+*db.users.insertOne({name:"Josh",age:21})
+
+
+db.users.find()
+To get all the documents from the database
+
+db.users.findOne()
+only gets the first document
+
+db.users.drop()
+Drops the collection named users
+
+db.users.insertMany([
+    {
+        name:"Shawn"
+    }
+])

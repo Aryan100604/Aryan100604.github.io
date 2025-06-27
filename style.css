@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.navbar {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+}
+
+.logo {
+  margin-left: 25px;
+}
+
+.navigation ul {
+  display: flex;
+  list-style: none;
+  margin-right: 15px;
+}
+
+.navigation ul li {
+  margin-right: 25px;
+}
+
+.navigation ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.description {
+  display: flex;
+  align-items: center;
+  padding-top: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 50px;
+}
+.description .intro-photo img {
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px grey;
+}
+.description .intro button {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+.description .intro * {
+  padding-bottom: 10px;
+}
+.heading-services {
+  text-align: center;
+}
+.services {
+  background-color: black;
+  color: white;
+}
+
+.services-cards {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 50px;
+  padding: 20px;
+}
+.service-card {
+  background-color: white;
+  color: rgb(26, 24, 24);
+  border: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 2px grey;
+}
+.service-card h2 {
+  padding: 10px;
+  text-align: center;
+}
+.footer {
+  background-color: rgb(52, 50, 50);
+  color: white;
+}
+.footer p {
+  text-align: center;
+}
