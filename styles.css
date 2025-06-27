@@ -81,6 +81,37 @@
   padding: 10px;
   text-align: center;
 }
+.projects {
+  background-color: black;
+  color: white;
+}
+.heading-project {
+  text-align: center;
+}
+.project-cards {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 50px;
+  padding: 20px;
+}
+.project-card {
+  background-color: white;
+  color: rgb(26, 24, 24);
+  border: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 2px grey;
+  text-decoration: none;
+}
+.project-card h2 {
+  padding: 10px;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+}
 .footer {
   background-color: rgb(52, 50, 50);
   color: white;
