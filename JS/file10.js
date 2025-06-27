@@ -1,14 +1,14 @@
 let cart = [];
 const products = [
-  { id: 1, name: "Product 1", price: 25 },
-  { id: 2, name: "Product 2", price: 50 },
-  { id: 3, name: "Product 3", price: 100 },
+  { id: 1, name: "Shampoo", price: 25 },
+  { id: 2, name: "Soap", price: 50 },
+  { id: 3, name: "Fan", price: 100 },
 ];
 
 const showProducts = () => {
   let str = `<h2>Products available</h2>`;
   products.map((product, index) => {
-    str += `<p>${index + 1}. Product name:${product.name}, Product price:${
+    str += `<p>${index + 1}.${product.name}  Price:${
       product.price
     }</p><button onclick='addToCart(${index + 1})'>Add to cart</button>\n`;
   });
@@ -36,8 +36,12 @@ const RemoveItem = (id) => {
 
 const showCart = () => {
   let str = `<h2> Your Cart</h2>`;
-  cart.map((item) => {
-    str += `<p>${item.id} Cart Item name:${item.name}, Cart Item Price${item.price},Item Quantity${item.quantity}</p><button onclick="RemoveItem(${item.id})">Reduce the quantity</button>\n`;
+  cart.map((item, index) => {
+    str += `<p>${index + 1}. ${item.name}  Price${
+      item.price
+    }<button onclick="addToCart(${item.id})">+</button>${
+      item.quantity
+    }<button onclick="RemoveItem(${item.id})">-</button></p>\n`;
   });
   let total = calcuateTotal();
   str += `<p>Total value is ${total}</p>`;

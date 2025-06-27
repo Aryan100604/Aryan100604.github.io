@@ -12,6 +12,9 @@ body {
   border-radius: 5px;
   padding: 20px;
 }
+#root h2 {
+  text-align: center;
+}
 
 button {
   background-color: black;
