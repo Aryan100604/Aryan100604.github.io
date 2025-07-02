@@ -1,13 +1,14 @@
+* {
+  padding: 0;
+  margin: 0;
+}
 body {
   height: 100vh;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgb(200, 167, 230);
 }
 
 #root {
-  background-color: rgb(200, 167, 230);
   margin: 40px;
   border-radius: 5px;
   padding: 20px;
@@ -19,13 +20,78 @@ body {
 button {
   background-color: black;
   color: white;
-  padding: 10px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   outline: none;
   border: none;
   border-radius: 5px;
 }
 #cart {
-  background-color: rgb(223, 154, 154);
+  margin: 20px;
   border-radius: 5px;
+
+  background-color: rgb(238, 241, 243);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 15px;
+}
+.shopping-cart {
   padding: 20px;
+}
+.summary {
+  padding: 20px;
+  background-color: rgb(208, 205, 205);
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.summary > div {
+  margin-bottom: 10px;
+}
+.shopping-head {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  padding: 10px;
+}
+.cart-items div {
+  min-width: 70px;
+  max-width: 70px;
+}
+
+.summary-head {
+  height: 50px;
+}
+.items-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.check-out {
+  background-color: black;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  box-shadow: 5px 5px 5px grey;
+}
+
+.coupon-code h4 {
+  margin: 2px;
+}
+.coupon-code input {
+  padding: 10px;
+  box-shadow: 5px 5px 5px grey;
 }

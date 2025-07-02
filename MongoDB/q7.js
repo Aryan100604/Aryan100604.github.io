@@ -71,9 +71,9 @@ db.address.insertOne({
 });
 
 db.address.insertOne({
-  studentId: ObjectId("685cdd5a1ed0f42e094eeb8b"),
-  city: "LA",
-  country: "USA",
+  studentId: ObjectId("685cdccd1ed0f42e094eeb88"),
+  city: "Tokyo",
+  country: "Japan",
 });
 
 db.address.insertOne({
@@ -95,7 +95,7 @@ db.students.aggregate([
     $unwind: "$address",
   },
   {
-    $project: { name: 1, "$address.city": 1, "$address.country": 1 },
+    $project: { name: 1, "address.city": 1, "address.country": 1 },
   },
 ]);
 
@@ -116,3 +116,227 @@ db.students.aggregate([
   { $unwind: "$address" },
   { $project: { name: 1, "address.city": 1, "address.country": 1 } },
 ]);
+db.comments.insertMany([
+  {
+    postId: ObjectId("685e27df5b326eec1b4eeb8a"),
+    comment: "Comment 1",
+  },
+  {
+    postId: ObjectId("685e27df5b326eec1b4eeb8a"),
+    comment: "Comment 2",
+  },
+]);
+
+db.comments.insertMany([
+  {
+    postId: ObjectId("685e27eb5b326eec1b4eeb8b"),
+    comment: "Comment 1",
+  },
+  {
+    postId: ObjectId("685e27eb5b326eec1b4eeb8b"),
+    comment: "Comment 2",
+  },
+  {
+    postId: ObjectId("685e27eb5b326eec1b4eeb8b"),
+    comment: "Comment 3",
+  },
+]);
+
+db.posts.aggregate([
+  {
+    $lookup: {
+      from: "comments",
+      localField: "_id",
+      foreignField: "postId",
+      as: "comments",
+    },
+  },
+  { $unwind: "$comments" },
+  {
+    $project: { _id: 0, post: 1, "comments.comment": 1 },
+  },
+]);
+db.posts.aggregate([
+  {
+    $lookup: {
+      from: "comments",
+      localField: "_id",
+      foreignField: "postId",
+      as: "comments",
+    },
+  },
+  {
+    $limit: 1,
+  },
+]);
+
+db.employees.aggregate([
+  {
+    $group: {
+      department: { $eq: "IT" },
+      total_expenditure: { $sum: "Salary" },
+    },
+  },
+]);
+
+db.Marks.insertMany([
+  { name: "John", term: 1, subject: "Maths", marks: 95 },
+  { name: "John", term: 2, subject: "Maths", marks: 80 },
+  { name: "John", term: 3, subject: "Maths", marks: 70 },
+  { name: "John", term: 1, subject: "Science", marks: 50 },
+  { name: "John", term: 2, subject: "Science", marks: 60 },
+  { name: "John", term: 3, subject: "Science", marks: 90 },
+  { name: "Cathy", term: 1, subject: "Maths", marks: 91 },
+  { name: "Cathy", term: 2, subject: "Maths", marks: 81 },
+  { name: "Cathy", term: 3, subject: "Maths", marks: 71 },
+  { name: "Cathy", term: 1, subject: "Science", marks: 51 },
+  { name: "Cathy", term: 2, subject: "Science", marks: 61 },
+  { name: "Cathy", term: 3, subject: "Science", marks: 91 },
+]);
+db.Marks.find({}, { _id: 0 }).sort({ term: 1 });
+
+db.Marks.aggregate([
+  { $group: { _id: "$name", totalMarks: { $sum: "$marks" } } },
+]);
+
+db.Marks.aggregate([
+  { $group: { _id: "$subject", totalMarks: { $sum: "$marks" } } },
+]);
+
+//33-203
+
+db.Marks.aggregate([
+  { $group: { _id: "$term", totalMarks: { $sum: "$marks" } } },
+]);
+
+db.Marks.aggregate([
+  {
+    $group: {
+      _id: { name: "$name", subject: "$subject" },
+      totalMarks: { $sum: "$marks" },
+    },
+  },
+]);
+db.Marks.aggregate([
+  {
+    $group: {
+      _id: { term: "$term", name: "$name" },
+      totalMarks: { $sum: "$marks" },
+    },
+  },
+  {
+    $sort: { _id: 1 },
+  },
+]);
+
+//Conditional Display
+db.employees.aggregate([
+  {
+    $project: {
+      name: 1,
+      _id: 0,
+      salary: 1,
+      Grade: { $cond: [{ $gt: ["$salary", 2000] }, "Grade A", "Grade B"] },
+    },
+  },
+]);
+db.employees.aggregate([
+  {
+    $project: {
+      name: 1,
+      _id: 0,
+      salary: 1,
+      Grade: {
+        $cond: {
+          if: { $gt: ["$salary", 2000] },
+          then: "Grade A",
+          else: "Grade B",
+        },
+      },
+    },
+  },
+]);
+
+db.employees.aggregate([
+  {
+    $project: {
+      name: 1,
+      _id: 0,
+      salary: 1,
+      Grade: {
+        $cond: {
+          if: { $gt: ["$salary", 2000] },
+          then: "Grade A",
+          else: "Grade B",
+        },
+      },
+    },
+  },
+]);
+
+db.employees.updateMany({ department: "IT" }, { $set: { strSalary: "2000" } });
+db.employees.updateMany(
+  { department: { $ne: "IT" } },
+  { $set: { strSalary: "1000" } }
+);
+
+db.employees.aggregate(
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      department: 1,
+      Sal: { $convert: { input: "$strSalary", to: "int" } },
+    },
+  },
+  { $group: { _id: "$department", total: { $sum: "$Sal" } } }
+);
+
+//The output is stored in new collections
+db.employees.aggregate(
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      department: 1,
+      Sal: { $convert: { input: "$strSalary", to: "int" } },
+    },
+  },
+  { $group: { _id: "$department", total: { $sum: "$Sal" } } },
+  { $out: "depWiseSalary" }
+);
+
+db.createView("depWiseSalaryView", "employees", [
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      department: 1,
+      Sal: { $convert: { input: "$strSalary", to: "int" } },
+    },
+  },
+  { $group: { _id: "$department", total: { $sum: "$Sal" } } },
+]);
+
+db.createView("HighPaidEmployees", "employees", [
+  {
+    $match: { salary: { $gt: 3000 } },
+  },
+  { $project: { _id: 0, name: 1, salary: 1 } },
+]);
+
+// mongodump -d practice -o D:\Development\practice_backup
+
+db.dropDatabase();
+
+// mongorestore -d practice D:\Development\practice_backup\practice
+
+db.employees.find({ name: { $regex: "Cathy" } });
+
+db.employees.find({ name: { $regex: "cathy" } }); //Case insensitive
+
+db.employees.find({ name: { $regex: "Cathy", $options: "i" } }); //Case sensitive
+
+db.employees.find({ name: { $regex: "^C" } }); //All the names starting from Capital C
+
+db.employees.find({ name: { $regex: "y$" } }); //All the names that ends in y

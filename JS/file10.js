@@ -35,17 +35,52 @@ const RemoveItem = (id) => {
 };
 
 const showCart = () => {
-  let str = `<h2> Your Cart</h2>`;
-  cart.map((item, index) => {
-    str += `<p>${index + 1}. ${item.name}  Price${
-      item.price
-    }<button onclick="addToCart(${item.id})">+</button>${
-      item.quantity
-    }<button onclick="RemoveItem(${item.id})">-</button></p>\n`;
-  });
   let total = calcuateTotal();
-  str += `<p>Total value is ${total}</p>`;
+  let quantity = calculateQuantity();
+  let str = `<div class="shopping-cart">
+      <div class="shopping-head">
+        <h1>Shopping Cart</h1>
+        <p>${quantity}</p>
+      </div>
+      <hr />`;
+  cart.map((item) => {
+    str += `<div class="cart-items">
+        <div class="item-name" >${item.name}</div>
+        <div class="item-quantity"><button onclick="addToCart(${item.id})">+ </button>${item.quantity}<button onclick="RemoveItem(${item.id})"> -</button></div>
+        <div class="item-price">${item.price}</div>
+      </div>
+      <hr />`;
+  });
+  str += `</div>
+    <div class="summary">
+      <div class="summary-head">
+        <h3>Summary</h3>
+      </div>
+      <hr />
+      <div class="items-info">
+        <h4>${quantity}</h4>
+        <h4>${total}</h4>
+      </div>
+      <div class="shipping">
+        <h3>Shipping</h3>
+        <div class="shipping-details">
+          <p>Delivery Charges</p>
+          <p>$5</p>
+        </div>
+      </div>
+      <div class="coupon-code">
+        <h4>Give code</h4>
+        <input type="text" placeholder="Enter your code" />
+      </div>
+      <hr />
+      <div class="total-price">
+        <h3>Total Price</h3>
+        <h3>${total + 5}</h3>
+      </div>
+      <button class="check-out">Check Out</button>
+    </div>`;
   document.getElementById("cart").innerHTML = str;
+
   console.log(cart);
 };
 
@@ -58,3 +93,22 @@ const calcuateTotal = () => {
   }
   return total;
 };
+const calculateQuantity = () => {
+  let quantity = 0;
+  if (cart) {
+    cart.forEach((item) => {
+      quantity += item.quantity;
+    });
+  }
+  return quantity;
+};
+
+// cart.map((item, index) => {
+//   str += `<p>${index + 1}. ${item.name}  Price${
+//     item.price
+//   }<button onclick="addToCart(${item.id})">+</button>${
+//     item.quantity
+//   }<button onclick="RemoveItem(${item.id})">-</button></p>\n`;
+// });
+// let total = calcuateTotal();
+// str += `<p>Total value is ${total}</p>`;
